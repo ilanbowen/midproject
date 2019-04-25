@@ -1,6 +1,6 @@
 ---
 - name: Install K8S common services
-  hosts: localhost
+  hosts: all
   tasks:
     - name: K8S | Install K8S | Install apt-transport-https
       apt:
