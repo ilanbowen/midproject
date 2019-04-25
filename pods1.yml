@@ -1,0 +1,30 @@
+# Create a pod and expose port 8080
+apiVersion: v1
+kind: Pod
+metadata:
+  name: opsschool-pod
+  labels:
+    app: opsschool
+spec:
+  containers:
+    - image: gcr.io/kuar-demo/kuard-amd64:1
+      name: kuard
+      ports:
+      - containerPort: 8080
+        name: http
+        protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:  
+  name: opsschool-service
+spec:
+  selector:    
+    app: opsschool
+  type: NodePort
+  ports:  
+  - name: http
+    port: 80
+    targetPort: 8080
+    nodePort: 30036
+    protocol: TCP
