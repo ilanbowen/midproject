@@ -1,6 +1,6 @@
 ---
 - name: Install K8S master services
-  hosts: all
+  hosts: localhost
   tasks:
     - name: General | Load varibles
       include_vars:
@@ -24,8 +24,8 @@
     - name: K8S | Install Master | Change ownership on /.kube/config
       file:
         path: "{{ lookup('env','HOME') }}/.kube/config"
-        owner: vagrant
-        group: vagrant
+        owner: ubuntu
+        group: ubuntu
       become: true
       become_method: sudo
 
