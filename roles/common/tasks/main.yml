@@ -1,0 +1,16 @@
+---
+# tasks file for common
+- name: Perform apt-get update
+  apt:
+    update_cache: yes
+
+- name: Make python-pip package installed
+  apt:
+    name: python-pip
+    state: present
+
+
+
+
+
+
