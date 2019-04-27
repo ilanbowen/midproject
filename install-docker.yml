@@ -1,6 +1,6 @@
 ---
 - name: Install docker
-  hosts: localhost
+  hosts: control1
   become: true
 
   tasks:

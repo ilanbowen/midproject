@@ -1,0 +1,7 @@
+---
+# tasks file for common
+- name: Docker | Install Docker | Install Docker from Repo
+  apt:
+    name: docker.io
+    update_cache: yes
+    state: present

@@ -1,7 +1,7 @@
 ---
 - name: configure using common and db setup roles
   hosts: control1
-  remote_user: centos
+  remote_user: ubuntu
   become: yes
   roles:
-     - common
+     - docker_common
