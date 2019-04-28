@@ -1,6 +1,6 @@
 ---
 - name: configure using common and db setup roles
-  hosts: control1
+  hosts: all
   remote_user: ubuntu
   become: yes
   roles:
