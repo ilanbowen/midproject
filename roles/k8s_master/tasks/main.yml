@@ -2,20 +2,28 @@
 # tasks file for master
 - name: K8S | Install Master | Initialize K8S with kubeadm
   shell: kubeadm init --token={{ kubeadm_token }} --apiserver-advertise-address={{ k8s_master_ip }} --pod-network-cidr=10.10.0.0/16
+  become: yes
+  become_method: sudo
 
 - name: K8S | Install Master | Create .kube directory
   file:
     path: "{{ lookup('env','HOME') }}/.kube"
     state: directory
+  become: yes
+  become_method: sudo    
 
 - name: K8S | Install Master | Copy admin.conf file to /.kube/config
   shell: "cp -i /etc/kubernetes/admin.conf {{ lookup('env','HOME') }}/.kube/config"
+  become: yes
+  become_method: sudo  
 
 - name: K8S | Install Master | Change ownership on /.kube/config
   file:
     path: "{{ lookup('env','HOME') }}/.kube/config"
     owner: ubuntu
     group: ubuntu
+  become: yes
+  become_method: sudo    
 
 - name: K8S | Install Master | Install pod network
   shell: kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/rbac-kdd.yaml

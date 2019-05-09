@@ -1,18 +1,16 @@
 ---
-- name: Install Docker and Kubernetes common components on Master and Slave
-  hosts: all
   remote_user: ubuntu
   become: yes
   become_method: sudo
+
+- name: Install Docker and Kubernetes common components on Master and Slave
+  hosts: all
   roles:
      - docker_common
      - k8s_common
   
-  name: Install Kubernetes Master
+- name: Install Kubernetes Master
   hosts: control1
-  remote_user: ubuntu
-  become: yes
-  become_method: sudo
   roles:
      - k8s_master
 
