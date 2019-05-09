@@ -10,10 +10,7 @@
   roles:
      - k8s_master
 
-  #name: Install Kubernetes Slave
-  #hosts: app
-  #remote_user: ubuntu
-  #become: yes
-  #become_method: sudo
-  #roles:
-  #   - k8s_minion     
+- name: Install Kubernetes Slave
+  hosts: app
+  roles:
+     - k8s_minion     
