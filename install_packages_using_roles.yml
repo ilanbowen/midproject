@@ -1,7 +1,5 @@
 ---
-  remote_user: ubuntu
-  become: yes
-  become_method: sudo
+#  remote_user: ubuntu
 
 - name: Install Docker and Kubernetes common components on Master and Slave
   hosts: all
