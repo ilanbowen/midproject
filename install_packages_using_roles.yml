@@ -8,13 +8,13 @@
      - docker_common
      - k8s_common
   
-  #name: Install Kubernetes Master
-  #hosts: control1
-  #remote_user: ubuntu
-  #become: yes
-  #become_method: sudo
-  #roles:
-  #   - k8s_master
+  name: Install Kubernetes Master
+  hosts: control1
+  remote_user: ubuntu
+  become: yes
+  become_method: sudo
+  roles:
+     - k8s_master
 
   #name: Install Kubernetes Slave
   #hosts: app
