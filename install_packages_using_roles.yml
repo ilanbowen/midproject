@@ -5,12 +5,12 @@
      - docker_common
      - k8s_common
 
-- name: Install Kubernetes Master
-  hosts: control1
-  roles:
-     - k8s_master
+#- name: Install Kubernetes Master
+#  hosts: control1
+#  roles:
+#     - k8s_master
 
-- name: Install Kubernetes Slave
-  hosts: app
-  roles:
-     - k8s_minion     
+#- name: Install Kubernetes Slave
+#  hosts: app
+#  roles:
+#     - k8s_minion     
