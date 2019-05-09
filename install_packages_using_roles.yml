@@ -1,12 +1,10 @@
 ---
-#  remote_user: ubuntu
-
 - name: Install Docker and Kubernetes common components on Master and Slave
   hosts: all
   roles:
      - docker_common
      - k8s_common
-  
+
 - name: Install Kubernetes Master
   hosts: control1
   roles:
