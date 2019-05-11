@@ -1,22 +1,23 @@
 ---
-- name: Install Docker and Kubernetes common components on Master and Slave
-  hosts: all
-  roles:
-     - docker_common
-     - k8s_common
-
-- name: Install Kubernetes Master
-  hosts: control1
-  roles:
-     - k8s_master
-
-- name: Install Kubernetes Slave
-  hosts: app
-  roles:
-     - k8s_minion    
-
 - name: Install Jenkins Master
   hosts: control1
   become: true
   roles:
      - jenkins_master
+
+#- name: Install Docker and Kubernetes common components on Master and Slave
+#  hosts: all
+#  roles:
+#     - docker_common
+#     - k8s_common
+
+#- name: Install Kubernetes Master
+#  hosts: control1
+#  roles:
+#     - k8s_master
+
+#- name: Install Kubernetes Slave
+#  hosts: app
+#  roles:
+#     - k8s_minion    
+
