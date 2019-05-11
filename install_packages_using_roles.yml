@@ -13,4 +13,10 @@
 - name: Install Kubernetes Slave
   hosts: app
   roles:
-     - k8s_minion     
+     - k8s_minion    
+
+- name: Install Jenkins Master
+  hosts: control1
+  become: true
+  roles:
+     - jenkins_master
