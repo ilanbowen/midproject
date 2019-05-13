@@ -65,6 +65,27 @@
 - name: restart jenkins
   service: name=jenkins state=restarted
 
+- name: Wait untils Jenkins web API is available
+  shell: curl --head --silent http://localhost:8080/cli/
+  register: result
+  until: result.stdout.find("200 OK") != -1
+  retries: 12
+  delay: 5
+
+- name: Download CLI jar
+  get_url:
+    url: "http://localhost:8080/jnlpJars/jenkins-cli.jar"
+    dest: /opt/jenkins-cli.jar
+
+#- name: Install plugin
+#  shell: java -jar /opt/jenkins-cli.jar -s http://localhost:8080/ install-plugin {{ item }}
+#  with_items: jenkins_plugins
+#  when: jenkins_plugins is defined
+
+- name: Restart Jenkins
+  service: name=jenkins state=restarted enabled=yes
+  when: jenkins_plugins is defined    
+
 - name: init password jenkin
   shell: cat /var/lib/jenkins/secrets/initialAdminPassword
   changed_when: false
