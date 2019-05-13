@@ -65,13 +65,9 @@
 - name: restart jenkins
   service: name=jenkins state=restarted
 
-- name: Wait untils Jenkins web API is available
-  shell: curl --head --silent http://localhost:8080/cli/
-  register: result
-  until: result.stdout.find("200 OK") != -1
-  retries: 12
-  delay: 5
-  become: true
+- name: sleep for 30 seconds and continue with play
+  wait_for: timeout=30
+  delegate_to: localhost
 
 - name: Download CLI jar
   get_url:
@@ -83,11 +79,11 @@
 #  with_items: jenkins_plugins
 #  when: jenkins_plugins is defined
 
-- name: Restart Jenkins
-  service: name=jenkins state=restarted enabled=yes
-  when: jenkins_plugins is defined    
+#- name: Restart Jenkins
+#  service: name=jenkins state=restarted enabled=yes
+#  when: jenkins_plugins is defined    
 
-- name: init password jenkin
+- name: init password jenkins
   shell: cat /var/lib/jenkins/secrets/initialAdminPassword
   changed_when: false
   register: result
