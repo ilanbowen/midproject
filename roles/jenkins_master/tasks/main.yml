@@ -71,6 +71,7 @@
   until: result.stdout.find("200 OK") != -1
   retries: 12
   delay: 5
+  become: true
 
 - name: Download CLI jar
   get_url:
