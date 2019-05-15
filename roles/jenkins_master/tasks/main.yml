@@ -88,6 +88,17 @@
   changed_when: false
   register: result
 
+- name: Jenkins - Create Job
+  shell: java -jar /opt/jenkins-cli.jar -s http://192.168.100.100:8080/ -auth admin:d2c3932cdf7a40e088ed6022e38f464f create-job CloneGitRepoJob < /home/ubuntu/midproject/CloneGitRepoJob.xml
+  become: yes
+  become_method: sudo
+
+- name: Jenkins - Run Job
+  shell: java -jar /opt/jenkins-cli.jar -s http://192.168.100.100:8080/ -auth admin:d2c3932cdf7a40e088ed6022e38f464f build CloneGitRepoJob
+  become: yes
+  become_method: sudo  
+
 - name: print init password jenkins
   debug:
     var: result.stdout
+
