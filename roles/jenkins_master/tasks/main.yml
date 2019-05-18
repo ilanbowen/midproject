@@ -89,42 +89,42 @@
   register: result
 
 - name: Jenkins - Create Clone GitRepo Job
-  shell: java -jar /opt/jenkins-cli.jar -s http://192.168.100.100:8080/ -auth admin:d2c3932cdf7a40e088ed6022e38f464f create-job CloneGitRepo < /home/ubuntu/midproject/CloneGitRepo_Job.xml
+  shell: java -jar /opt/jenkins-cli.jar -s http://192.168.100.100:8080/ -auth admin:4dce6182a99343c9a65585d9050a54ea create-job CloneGitRepo < /home/ubuntu/midproject/CloneGitRepo_Job.xml
   become: yes
   become_method: sudo
 
 - name: Jenkins - Create BuildDockerImage Job
-  shell: java -jar /opt/jenkins-cli.jar -s http://192.168.100.100:8080/ -auth admin:d2c3932cdf7a40e088ed6022e38f464f create-job BuildDockerImage < /home/ubuntu/midproject/BuildDockerImage_Job.xml
+  shell: java -jar /opt/jenkins-cli.jar -s http://192.168.100.100:8080/ -auth admin:4dce6182a99343c9a65585d9050a54ea create-job BuildDockerImage < /home/ubuntu/midproject/BuildDockerImage_Job.xml
   become: yes
   become_method: sudo  
 
 - name: Jenkins - Create RunDockerContainer Job
-  shell: java -jar /opt/jenkins-cli.jar -s http://192.168.100.100:8080/ -auth admin:d2c3932cdf7a40e088ed6022e38f464f create-job RunDockerContainer < /home/ubuntu/midproject/RunDockerContainer_Job.xml
+  shell: java -jar /opt/jenkins-cli.jar -s http://192.168.100.100:8080/ -auth admin:4dce6182a99343c9a65585d9050a54ea create-job RunDockerContainer < /home/ubuntu/midproject/RunDockerContainer_Job.xml
   become: yes
   become_method: sudo
 
 - name: Jenkins - Create UploadDockerImageToDockerHub Job
-  shell: java -jar /opt/jenkins-cli.jar -s http://192.168.100.100:8080/ -auth admin:d2c3932cdf7a40e088ed6022e38f464f create-job UploadDockerImageToDockerHub < /home/ubuntu/midproject/UploadDockerImageToDockerHub_Job.xml
+  shell: java -jar /opt/jenkins-cli.jar -s http://192.168.100.100:8080/ -auth admin:4dce6182a99343c9a65585d9050a54ea create-job UploadDockerImageToDockerHub < /home/ubuntu/midproject/UploadDockerImageToDockerHub_Job.xml
   become: yes
   become_method: sudo  
 
 - name: Jenkins - Run Clone GitRepo Job
-  shell: java -jar /opt/jenkins-cli.jar -s http://192.168.100.100:8080/ -auth admin:d2c3932cdf7a40e088ed6022e38f464f build CloneGitRepo
+  shell: java -jar /opt/jenkins-cli.jar -s http://192.168.100.100:8080/ -auth admin:4dce6182a99343c9a65585d9050a54ea build CloneGitRepo
   become: yes
   become_method: sudo  
 
 - name: Jenkins - Run BuildDockerImage Job
-  shell: java -jar /opt/jenkins-cli.jar -s http://192.168.100.100:8080/ -auth admin:d2c3932cdf7a40e088ed6022e38f464f build BuildDockerImage
+  shell: java -jar /opt/jenkins-cli.jar -s http://192.168.100.100:8080/ -auth admin:4dce6182a99343c9a65585d9050a54ea build BuildDockerImage
   become: yes
   become_method: sudo
 
 - name: Jenkins - Run RunDockerContainer Job
-  shell: java -jar /opt/jenkins-cli.jar -s http://192.168.100.100:8080/ -auth admin:d2c3932cdf7a40e088ed6022e38f464f build RunDockerContainer
+  shell: java -jar /opt/jenkins-cli.jar -s http://192.168.100.100:8080/ -auth admin:4dce6182a99343c9a65585d9050a54ea build RunDockerContainer
   become: yes
   become_method: sudo
 
 - name: Jenkins - Run UploadDockerImageToDockerHub Job
-  shell: java -jar /opt/jenkins-cli.jar -s http://192.168.100.100:8080/ -auth admin:d2c3932cdf7a40e088ed6022e38f464f build UploadDockerImageToDockerHub
+  shell: java -jar /opt/jenkins-cli.jar -s http://192.168.100.100:8080/ -auth admin:4dce6182a99343c9a65585d9050a54ea build UploadDockerImageToDockerHub
   become: yes
   become_method: sudo
 
