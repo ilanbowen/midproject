@@ -25,22 +25,22 @@
   roles:
      - build_clone_git_repo_job
      - build_build_docker_image_job
-     - build_run_docker_container_job
+#     - build_run_docker_container_job
      - build_upload_docker_image_to_dockerhub_job     
 
 
-#- name: Install Kubernetes common components on Master and Slave
-#  hosts: all
-#  roles:
-#     - k8s_common
+- name: Install Kubernetes common components on Master and Slave
+  hosts: all
+  roles:
+     - k8s_common
 
-#- name: Install Kubernetes Master
-#  hosts: control1
-#  roles:
-#     - k8s_master
+- name: Install Kubernetes Master
+  hosts: control1
+  roles:
+     - k8s_master
 
-#- name: Install Kubernetes Slave
-#  hosts: app
-#  roles:
-#     - k8s_minion    
+- name: Install Kubernetes Slave
+  hosts: app
+  roles:
+     - k8s_minion    
 
