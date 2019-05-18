@@ -10,23 +10,23 @@
 #  roles:
 #     - jenkins_master
 
-- name: Jenkins - Create Jobs
-  hosts: control1
-  become: true
-  roles:
- #    - create_clone_git_repo_job
-     - create_build_docker_image_job
-     - create_run_docker_container_job
-     - create_upload_docker_image_to_dockerhub_job
-
-#- name: Jenkins - Build Jobs
+#- name: Jenkins - Create Jobs
 #  hosts: control1
 #  become: true
 #  roles:
-#     - build_clone_git_repo_job
-#     - build_build_docker_image_job
-#     - build_run_docker_container_job
-#     - build_upload_docker_image_to_dockerhub_job     
+ #    - create_clone_git_repo_job
+ #    - create_build_docker_image_job
+ #    - create_run_docker_container_job
+ #    - create_upload_docker_image_to_dockerhub_job
+
+- name: Jenkins - Build Jobs
+  hosts: control1
+  become: true
+  roles:
+     - build_clone_git_repo_job
+     - build_build_docker_image_job
+     - build_run_docker_container_job
+     - build_upload_docker_image_to_dockerhub_job     
 
 
 #- name: Install Kubernetes common components on Master and Slave
