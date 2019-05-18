@@ -1,14 +1,18 @@
 ---
+- name: Install Docker common components on Master
+  hosts: control1
+  roles:
+     - docker_common
+
 - name: Install Jenkins Master
   hosts: control1
   become: true
   roles:
      - jenkins_master
 
-#- name: Install Docker and Kubernetes common components on Master and Slave
+#- name: Install Kubernetes common components on Master and Slave
 #  hosts: all
 #  roles:
-#     - docker_common
 #     - k8s_common
 
 #- name: Install Kubernetes Master
