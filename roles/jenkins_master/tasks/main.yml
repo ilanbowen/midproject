@@ -127,10 +127,10 @@
   become: yes
   become_method: sudo
 
-#- name: Jenkins - Run UploadDockerImageToDockerHub Job
-#  shell: java -jar /opt/jenkins-cli.jar -s http://192.168.100.100:8080/ -auth admin:{{ packages }} build UploadDockerImageToDockerHub
-#  become: yes
-#  become_method: sudo
+- name: Jenkins - Run UploadDockerImageToDockerHub Job
+  shell: java -jar /opt/jenkins-cli.jar -s http://192.168.100.100:8080/ -auth admin:{{ packages }} build UploadDockerImageToDockerHub
+  become: yes
+  become_method: sudo
 
 - name: print init password jenkins
   debug:
