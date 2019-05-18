@@ -14,7 +14,7 @@
   <builders>
     <hudson.tasks.Shell>
       <command>cd /home/ubuntu/midproject
-sudo docker run -d -p 80:5000 --name myflaskproj_cont ilanbowen/myflaskproj_img</command>
+sudo docker run -d -p 80:5000 --name myflaskproj-cont ilanbowen/myflaskproj-img</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
