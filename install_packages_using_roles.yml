@@ -1,6 +1,6 @@
 ---
-- name: Docker - Install Docker common components on Master
-  hosts: control1
+- name: Docker - Install Docker common components on Master and Slave
+  hosts: all
   roles:
      - docker_common
 
