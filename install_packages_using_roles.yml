@@ -1,23 +1,23 @@
 ---
-#- name: Docker - Install Docker common components on Master
-#  hosts: control1
-#  roles:
-#     - docker_common
+- name: Docker - Install Docker common components on Master
+  hosts: control1
+  roles:
+     - docker_common
 
-#- name: Jenkins - Install Jenkins Master
-#  hosts: control1
-#  become: true
-#  roles:
-#     - jenkins_master
+- name: Jenkins - Install Jenkins Master
+  hosts: control1
+  become: true
+  roles:
+     - jenkins_master
 
-#- name: Jenkins - Create Jobs
-#  hosts: control1
-#  become: true
-#  roles:
- #    - create_clone_git_repo_job
- #    - create_build_docker_image_job
- #    - create_run_docker_container_job
- #    - create_upload_docker_image_to_dockerhub_job
+- name: Jenkins - Create Jobs
+  hosts: control1
+  become: true
+  roles:
+     - create_clone_git_repo_job
+     - create_build_docker_image_job
+     - create_run_docker_container_job
+     - create_upload_docker_image_to_dockerhub_job
 
 - name: Jenkins - Build Jobs
   hosts: control1
