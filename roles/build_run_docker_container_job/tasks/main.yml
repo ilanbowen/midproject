@@ -1,0 +1,14 @@
+---
+- name: init password jenkins
+  shell: cat /var/lib/jenkins/secrets/initialAdminPassword
+  changed_when: false
+  register: result
+
+- name: sleep for 30 seconds and continue with play
+  wait_for: timeout=30
+  delegate_to: localhost  
+
+- name: Jenkins - Build RunDockerContainer Job
+  shell: java -jar /opt/jenkins-cli.jar -s http://192.168.100.100:8080/ -auth admin:{{ packages }} build RunDockerContainer
+  become: yes
+  become_method: sudo
