@@ -14,7 +14,7 @@
   <builders>
     <hudson.tasks.Shell>
       <command>cd /home/ubuntu/midproject
-sudo docker build -t ilanbowen/myflaskproj:latest .</command>
+sudo docker build -t ilanbowen/myflaskproj_img:latest .</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
