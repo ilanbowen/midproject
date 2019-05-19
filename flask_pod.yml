@@ -8,7 +8,7 @@ metadata:
 spec:
   containers:
     - image: ilanbowen/myflaskproj-img:latest
-      name: myflaskproj_cont
+      name: myflaskproj-cont
       ports:
       - containerPort: 5000
         name: http
