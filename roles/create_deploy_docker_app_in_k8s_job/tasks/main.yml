@@ -1,0 +1,11 @@
+---
+- name: init password jenkins
+  shell: cat /var/lib/jenkins/secrets/initialAdminPassword
+  changed_when: false
+  register: result
+
+- name: Jenkins - Create UploadDockerImageToDockerHub Job
+  shell: java -jar /opt/jenkins-cli.jar -s http://192.168.100.100:8080/ -auth admin:{{ result.stdout }} create-job DeployDockerAppInK8s < /home/ubuntu/midproject/DeployDockerAppInK8s_Job.xml
+
+  become: yes
+  become_method: sudo 

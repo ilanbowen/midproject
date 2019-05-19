@@ -13,18 +13,19 @@ spec:
       - containerPort: 5000
         name: http
         protocol: TCP
-#---
-#apiVersion: v1
-#kind: Service
-#metadata:  
-#  name: opsschool-service
-#spec:
-#  selector:    
-#    app: opsschool
-#  type: NodePort
-#  ports:  
-#  - name: http
-#    port: 80
-#    targetPort: 8080
-#    nodePort: 30036
-#    protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-pod-service
+  labels:
+    app: midproj-pod
+spec:
+  selector:
+    app: midproj-pod
+  type: NodePort
+  ports:
+  - port: 5000
+    nodePort: 30001
+    protocol: TCP
+

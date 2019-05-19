@@ -33,6 +33,7 @@
      - create_build_docker_image_job
      - create_run_docker_container_job
      - create_upload_docker_image_to_dockerhub_job
+     - create_deploy_docker_app_in_k8s_job
 
 - name: Jenkins - Build Jobs
   hosts: control1
@@ -41,4 +42,5 @@
      - build_clone_git_repo_job
      - build_build_docker_image_job
 #     - build_run_docker_container_job
-     - build_upload_docker_image_to_dockerhub_job  
+     - build_upload_docker_image_to_dockerhub_job
+     - build_deploy_docker_app_in_k8s_job    
