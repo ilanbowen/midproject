@@ -31,7 +31,7 @@
   roles:
      - create_clone_git_repo_job
      - create_build_docker_image_job
-     - create_run_docker_container_job
+#     - create_run_docker_container_job
      - create_upload_docker_image_to_dockerhub_job
      - create_deploy_docker_app_in_k8s_job
 
