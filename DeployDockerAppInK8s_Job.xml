@@ -14,7 +14,7 @@
   <builders>
     <hudson.tasks.Shell>
       <command>cd /home/ubuntu/midproject
-kubectl create –f flask_pod.yml</command>
+kubectl create -f flask_pod.yml</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
