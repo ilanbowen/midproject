@@ -1,0 +1,1 @@
+kubectl create -f /home/ubuntu/midproject/flask_pod_yml

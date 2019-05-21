@@ -13,8 +13,10 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>cd /home/ubuntu/midproject
-kubectl create -f flask_pod.yml</command>
+      <command>cd ~/.kube/
+	  sudo chown -R jenkins:jenkins config
+	  sudo chmod a+x /home/ubuntu/createpodandservice.sh
+	  /home/ubuntu/createpodandservice.sh</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
