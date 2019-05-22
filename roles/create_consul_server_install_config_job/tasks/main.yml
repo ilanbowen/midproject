@@ -1,0 +1,11 @@
+---
+- name: init password jenkins
+  shell: cat /var/lib/jenkins/secrets/initialAdminPassword
+  changed_when: false
+  register: result
+
+- name: Jenkins - Create ConsulServerInstallAndConfig Job
+  shell: java -jar /opt/jenkins-cli.jar -s http://192.168.100.100:8080/ -auth admin:{{ result.stdout }} create-job ConsulServerInstallAndConfig < /home/ubuntu/midproject/ConsulServerInstallAndConfig_Job.xml
+
+  become: yes
+  become_method: sudo 
