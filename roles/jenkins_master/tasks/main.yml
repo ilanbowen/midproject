@@ -74,63 +74,10 @@
     url: "http://localhost:8080/jnlpJars/jenkins-cli.jar"
     dest: /opt/jenkins-cli.jar
 
-#- name: Install plugin
-#  shell: java -jar /opt/jenkins-cli.jar -s http://localhost:8080/ install-plugin {{ item }}
-#  with_items: jenkins_plugins
-#  when: jenkins_plugins is defined
-
-#- name: Restart Jenkins
-#  service: name=jenkins state=restarted enabled=yes
-#  when: jenkins_plugins is defined    
-
 - name: init password jenkins
   shell: cat /var/lib/jenkins/secrets/initialAdminPassword
   changed_when: false
   register: result
-
-#- name: Jenkins - Create Clone GitRepo Job
-#  shell: java -jar /opt/jenkins-cli.jar -s http://192.168.100.100:8080/ -auth admin:{{ packages }} create-job CloneGitRepo < /home/ubuntu/midproject/CloneGitRepo_Job.xml
-#  become: yes
-#  become_method: sudo
-
-#- name: Jenkins - Create BuildDockerImage Job
-#  shell: java -jar /opt/jenkins-cli.jar -s http://192.168.100.100:8080/ -auth admin:{{ packages }} create-job BuildDockerImage < /home/ubuntu/midproject/BuildDockerImage_Job.xml
-#  become: yes
-#  become_method: sudo  
-
-#- name: Jenkins - Create RunDockerContainer Job
-#  shell: java -jar /opt/jenkins-cli.jar -s http://192.168.100.100:8080/ -auth admin:{{ packages }} create-job RunDockerContainer < /home/ubuntu/midproject/RunDockerContainer_Job.xml
-#  become: yes
-#  become_method: sudo
-
-#- name: Jenkins - Create UploadDockerImageToDockerHub Job
-#  shell: java -jar /opt/jenkins-cli.jar -s http://192.168.100.100:8080/ -auth admin:{{ packages }} create-job UploadDockerImageToDockerHub < /home/ubuntu/midproject/UploadDockerImageToDockerHub_Job.xml
-#  become: yes
-#  become_method: sudo  
-
-#- name: Jenkins - Run Clone GitRepo Job
-#  shell: java -jar /opt/jenkins-cli.jar -s http://192.168.100.100:8080/ -auth admin:{{ packages }} build CloneGitRepo
-#  become: yes
-#  become_method: sudo  
-
-#- name: Jenkins - Run BuildDockerImage Job
-#  shell: java -jar /opt/jenkins-cli.jar -s http://192.168.100.100:8080/ -auth admin:{{ packages }} build BuildDockerImage
-#  become: yes
-#  become_method: sudo
-
-#- name: sleep for 30 seconds and continue with play
-#  wait_for: timeout=30
-#  delegate_to: localhost  
-
-#- name: Jenkins - Run RunDockerContainer Job
-#  shell: java -jar /opt/jenkins-cli.jar -s http://192.168.100.100:8080/ -auth admin:{{ packages }} build RunDockerContainer
-#  become: yes
-#  become_method: sudo
-
-#- name: Jenkins - Run UploadDockerImageToDockerHub Job
-#  shell: java -jar /opt/jenkins-cli.jar -s http://192.168.100.100:8080/ -auth admin:{{ packages }} build UploadDockerImageToDockerHub
-#  become: yes
-#  become_method: sudo
 
 - name: print init password jenkins
   debug:

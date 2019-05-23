@@ -13,8 +13,11 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>cd /home/ubuntu/midproject
-sudo docker build -t ilanbowen/myflaskproj-img:latest .</command>
+      <command>sudo chown -R ubuntu:ubuntu /home/ubuntu/.kube
+sudo cp -r /home/ubuntu/.kube ~
+sudo chown -R jenkins:jenkins ~/.kube
+sudo chmod a+x /home/ubuntu/midproject/Kubernetes/createpodandservice.sh
+/home/ubuntu/midproject/Kubernetes/createpodandservice.sh</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>

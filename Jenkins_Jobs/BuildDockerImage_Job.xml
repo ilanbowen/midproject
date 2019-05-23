@@ -13,8 +13,8 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>cd /home/ubuntu/
-sudo -n git clone https://github.com/ilanbowen/flask-http.git</command>
+      <command>cd /home/ubuntu/midproject/Docker
+sudo docker build -t ilanbowen/myflaskproj-img:latest .</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>

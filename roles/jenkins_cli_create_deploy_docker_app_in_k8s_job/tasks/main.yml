@@ -5,7 +5,7 @@
   register: result
 
 - name: Jenkins - Create DeployDockerAppInK8s Job
-  shell: java -jar /opt/jenkins-cli.jar -s http://192.168.100.100:8080/ -auth admin:{{ result.stdout }} create-job DeployDockerAppInK8s < /home/ubuntu/midproject/DeployDockerAppInK8s_Job.xml
+  shell: java -jar /opt/jenkins-cli.jar -s http://192.168.100.100:8080/ -auth admin:{{ result.stdout }} create-job DeployDockerAppInK8s < /home/ubuntu/midproject/Jenkins_Jobs/DeployDockerAppInK8s_Job.xml
 
   become: yes
   become_method: sudo 

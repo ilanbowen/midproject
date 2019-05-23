@@ -13,8 +13,8 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>cd /home/ubuntu/midproject
-sudo docker run -d -p 80:5000 --name myflaskproj-cont ilanbowen/myflaskproj-img</command>
+      <command>cd /home/ubuntu/midproject/Docker
+sudo -n git clone https://github.com/ilanbowen/flask-http.git</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
