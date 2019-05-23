@@ -1,0 +1,19 @@
+{
+  "service": {
+    "name": "k8ssvc",
+    "id":"k8ssvc-30001",
+    "port": 30001,
+    "checks": [
+      {
+        "name": "Port 30001 tcp check",
+        "interval": "30s",
+        "TCP": "localhost:30001"
+      }#,
+#      {
+#        "name": "kubernetes service check",
+#        "interval": "1m",
+#        "args": ["/bin/systemctl", "status", "sshd.service"]
+#      }
+    ]
+  }
+}
