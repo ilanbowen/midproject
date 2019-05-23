@@ -1,1 +1,1 @@
-kubectl create -f /home/ubuntu/midproject/Kubernetesflask_pod.yml
+kubectl create -f /home/ubuntu/midproject/Kubernetes/flask_pod.yml
