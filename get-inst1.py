@@ -3,7 +3,7 @@ import boto
 from boto import ec2
 
 temphosts = '/home/ubuntu/midproject/temphosts'
-tfvars = 'terraform.tfvars'
+tfvars = '/home/ubuntu/terraform.tfvars'
 f=open(tfvars, 'r')
 AWS_ACCESS_KEY_ID=(((f.readline()).replace('aws_access_key = "','')).replace('"','')).rstrip()
 AWS_SECRET_ACCESS_KEY=(((f.readline()).replace('aws_secret_key = "','')).replace('"','')).rstrip()
