@@ -15,7 +15,7 @@ def get_instances():
     reservations = ec2conn.get_all_instances()
     instances = [i for r in reservations for i in r.instances]
     for i in instances:
-        if("MidProjectMaster" in (str(i.tags[u'Name'])) or "MidProjectSlave" in (str(i.tags[u'Name']))):
+        if("MidProjectAnsible" in (str(i.tags[u'Name'])) or "MidProjectSlave" in (str(i.tags[u'Name']))):
 #        if(i.vpc_id=='vpc-092a67ba407262eef' and (i.private_ip_address=='192.168.100.100' or i.private_ip_address=='192.168.100.101')):
 
             instance=[]
@@ -50,7 +50,7 @@ def main():
     blankline = ""
 
     for i in instancelist:
-      if(i[0]=='MidProjectMaster'):
+      if(i[0]=='MidProjectAnsible'):
          masteroutputstring1 = str('[control1]')
          masteroutputstring2 = str('control1 ansible_host=') + i[1]
 
