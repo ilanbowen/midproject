@@ -2,7 +2,7 @@ from pprint import pprint
 import boto
 from boto import ec2
 
-temphosts = '/home/ubuntu/midproject/temphosts'
+temphosts = '/home/ubuntu/midproject/hosts'
 tfvars = '/home/ubuntu/terraform.tfvars'
 f=open(tfvars, 'r')
 AWS_ACCESS_KEY_ID=(((f.readline()).replace('aws_access_key = "','')).replace('"','')).rstrip()
