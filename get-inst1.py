@@ -15,9 +15,7 @@ def get_instances():
     reservations = ec2conn.get_all_instances()
     instances = [i for r in reservations for i in r.instances]
     for i in instances:
-        if("MidProjectAnsible" in (str(i.tags[u'Name'])) or "MidProjectSlave" in (str(i.tags[u'Name']))):
-#        if(i.vpc_id=='vpc-092a67ba407262eef' and (i.private_ip_address=='192.168.100.100' or i.private_ip_address=='192.168.100.101')):
-
+        if("MidProject" in (str(i.tags[u'Name']))):
             instance=[]
             servername=str(i.tags[u'Name'])
             privateip=str(i.private_ip_address)
@@ -25,15 +23,6 @@ def get_instances():
             region=(str(i.region)).replace('RegionInfo:','')
             subnetid=str(i.subnet_id)
             vpcid=str(i.vpc_id)
-
-#            print("")
-#            print(servername)
-#            print(privateip)
-#            print(availabilityzone)
-#            print(region)
-#            print(subnetid)
-#            print(vpcid)
-
             instance.append(servername)
             instance.append(privateip)
             instance.append(availabilityzone)
@@ -51,8 +40,12 @@ def main():
 
     for i in instancelist:
       if(i[0]=='MidProjectAnsible'):
-         masteroutputstring1 = str('[control1]')
-         masteroutputstring2 = str('control1 ansible_host=') + i[1]
+         ansibleoutputstring1 = str('[control1]')
+         ansibleoutputstring2 = str('control1 ansible_host=') + i[1]
+
+      if(i[0]=='MidProjectJenkins'):
+         jenkinsoutputstring1 = str('[jenkins]')
+         jenkinsoutputstring2 = str('jenkins ansible_host=') + i[1]         
 
       if(i[0]=='MidProjectSlave'):
          slaveoutputstring1 = str('[app]')
@@ -61,18 +54,10 @@ def main():
     allvars1 = str('[all:vars]')
     allvars2 = str('ansible_user=ubuntu')
     allvars3 = str('ansible_ssh_private_key_file=/home/ubuntu/midproject/id_rsa')
-#    print(masteroutputstring1)
-#    print(masteroutputstring2)
-#    print(blankline)
-#    print(slaveoutputstring1)
-#    print(slaveoutputstring2)
-#    print(blankline)
-#    print(allvars1)
-#    print(allvars2)
-#    print(allvars3)
 
     f = open(temphosts,'w')
-    f.write(masteroutputstring1 + '\n' + masteroutputstring2 + '\n' + '\n' )
+    f.write(ansibleoutputstring1 + '\n' + ansibleoutputstring2 + '\n' + '\n' )
+    f.write(jenkinsoutputstring1 + '\n' + jenkinsoutputstring2 + '\n' + '\n' )    
     f.write(slaveoutputstring1 + '\n' + slaveoutputstring2 + '\n' + '\n' )
     f.write(allvars1 + '\n' + allvars2 + '\n' + allvars3 + '\n' + '\n' )
     f.close()
