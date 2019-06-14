@@ -20,13 +20,13 @@
      - k8s_minion    
 
 - name: Jenkins - Install Jenkins Master
-  hosts: jenkins
+  hosts: jenkinsmaster
   become: true
   roles:
      - jenkins_master
 
 - name: Jenkins - Create Jobs
-  hosts: jenkins
+  hosts: jenkinsmaster
   become: true
   roles:
      - jenkins_cli_create_clone_git_repo_job
@@ -35,7 +35,7 @@
      - jenkins_cli_create_deploy_docker_app_in_k8s_job
 
 - name: Jenkins - Build Jobs
-  hosts: jenkins
+  hosts: jenkinsmaster
   become: true
   roles:
      - jenkins_cli_build_clone_git_repo_job

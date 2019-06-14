@@ -51,9 +51,9 @@ def main():
          kubernetesminion1outputstring1 = str('[kubernetesminion1]')
          kubernetesminion1outputstring2 = str('kubernetesminion1 ansible_host=') + i[1]          
 
-      if(i[0]=='MidProjectJenkins'):
-         jenkinsoutputstring1 = str('[jenkins]')
-         jenkinsoutputstring2 = str('jenkins ansible_host=') + i[1]         
+      if(i[0]=='MidProjectJenkinsMaster'):
+         jenkinsmasteroutputstring1 = str('[jenkinsmaster]')
+         jenkinsmasteroutputstring2 = str('jenkinsmaster ansible_host=') + i[1]         
 
       if(i[0]=='MidProjectSlave'):
          slaveoutputstring1 = str('[app]')
@@ -67,7 +67,7 @@ def main():
     f.write(ansibleoutputstring1 + '\n' + ansibleoutputstring2 + '\n' + '\n' )
     f.write(kubernetesmasteroutputstring1 + '\n' + kubernetesmasteroutputstring2 + '\n' + '\n' )    
     f.write(kubernetesminion1outputstring1 + '\n' + kubernetesminion1outputstring2 + '\n' + '\n' )    
-#    f.write(jenkinsoutputstring1 + '\n' + jenkinsoutputstring2 + '\n' + '\n' )    
+    f.write(jenkinsmasteroutputstring1 + '\n' + jenkinsmasteroutputstring2 + '\n' + '\n' )    
 #    f.write(slaveoutputstring1 + '\n' + slaveoutputstring2 + '\n' + '\n' )
     f.write(allvars1 + '\n' + allvars2 + '\n' + allvars3 + '\n' + '\n' )
     f.close()
