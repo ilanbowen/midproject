@@ -15,7 +15,7 @@ def get_instances():
     reservations = ec2conn.get_all_instances()
     instances = [i for r in reservations for i in r.instances]
     for i in instances:
-        if("MidProject" in (str(i.tags[u'Name']))):
+        if("MidProject" in (str(i.tags[u'Name'])) and str(i.private_ip_address)!='None'):
             instance=[]
             servername=str(i.tags[u'Name'])
             privateip=str(i.private_ip_address)
