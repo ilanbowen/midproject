@@ -4,6 +4,12 @@
   roles:
      - docker_common
 
+- name: Jenkins - Install Jenkins Master
+  hosts: jenkinsmaster
+  become: true
+  roles:
+     - jenkins_master
+
 - name: Install Kubernetes common components on Master and Slave
   hosts: kubernetesmaster,kubernetesminion1
   roles:
@@ -19,12 +25,6 @@
   become: true
   roles:
      - k8s_minion    
-
-- name: Jenkins - Install Jenkins Master
-  hosts: jenkinsmaster
-  become: true
-  roles:
-     - jenkins_master
 
 - name: Jenkins - Create Jobs
   hosts: jenkinsmaster
