@@ -9,6 +9,6 @@
 #  delegate_to: localhost    
 
 - name: Jenkins - Build DeployDockerAppInK8s Job
-  shell: java -jar /opt/jenkins-cli.jar -s http://192.168.100.100:8080/ -auth admin:{{ result.stdout }} build DeployDockerAppInK8s
+  shell: java -jar /opt/jenkins-cli.jar -s http://localhost:8080/ -auth admin:{{ result.stdout }} build DeployDockerAppInK8s
   become: yes
   become_method: sudo
