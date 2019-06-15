@@ -5,6 +5,6 @@
   register: result
 
 - name: Jenkins - Create Clone GitRepo Job
-  shell: java -jar /opt/jenkins-cli.jar -s http://192.168.100.100:8080/ -auth admin:{{ result.stdout }} create-job CloneGitRepo < /home/ubuntu/midproject/Jenkins_Jobs/CloneGitRepo_Job.xml
+  shell: java -jar /opt/jenkins-cli.jar -s http://localhost:8080/ -auth admin:{{ result.stdout }} create-job CloneGitRepo < /home/ubuntu/midproject/Jenkins_Jobs/CloneGitRepo_Job.xml
   become: yes
   become_method: sudo
