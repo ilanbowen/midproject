@@ -13,7 +13,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>ssh ubuntu@k8sminion1_server -i /home/ubuntu/id_rsa "bash -s" < /home/ubuntu/midproject/DeployDockerAppInK8s.sh</command>
+      <command>sudo ssh ubuntu@k8sminion1_server -i /home/ubuntu/id_rsa "bash -s" < /home/ubuntu/midproject/DeployDockerAppInK8s.sh</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
