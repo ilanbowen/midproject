@@ -1,1 +1,1 @@
-kubectl create -f /home/ubuntu/midproject/Kubernetes/flask_pod.yml
+sudo kubectl create -f /home/ubuntu/midproject/Kubernetes/flask_pod.yml
