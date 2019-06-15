@@ -40,7 +40,7 @@ def main():
     for i in instancelist:
       if(i[0]=='MidProjectKubernetesMinion1' and i[1]!='None'):
          k8sminion1ip = str(i[1])
-         outputline = k8sminion1ip + ' k8sminion1_server'
+         outputline = k8sminion1ip + ' k8sminion1_server \n'
          f = open(etc_hosts,'a+')
          f.write(outputline)
          f.close()
