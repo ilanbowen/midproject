@@ -16,6 +16,7 @@
 
 - name: Install Kubernetes Minion
   hosts: kubernetesminion1
+  become: true
   roles:
      - k8s_minion    
 
