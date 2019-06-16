@@ -55,9 +55,9 @@ def main():
          jenkinsmasteroutputstring1 = str('[jenkinsmaster]')
          jenkinsmasteroutputstring2 = str('jenkinsmaster ansible_host=') + i[1]         
 
-      if(i[0]=='MidProjectSlave'):
-         slaveoutputstring1 = str('[app]')
-         slaveoutputstring2 = str('node-1 ansible_host=') + i[1]
+      if(i[0]=='MidProjectConsulServer1'):
+         consulserver1outputstring1 = str('[consulserver1]')
+         consulserver1outputstring2 = str('consulserver1 ansible_host=') + i[1]
 
     allvars1 = str('[all:vars]')
     allvars2 = str('ansible_user=ubuntu')
@@ -68,7 +68,7 @@ def main():
     f.write(kubernetesmasteroutputstring1 + '\n' + kubernetesmasteroutputstring2 + '\n' + '\n' )    
     f.write(kubernetesminion1outputstring1 + '\n' + kubernetesminion1outputstring2 + '\n' + '\n' )    
     f.write(jenkinsmasteroutputstring1 + '\n' + jenkinsmasteroutputstring2 + '\n' + '\n' )    
-#    f.write(slaveoutputstring1 + '\n' + slaveoutputstring2 + '\n' + '\n' )
+    f.write(consulserver1outputstring1 + '\n' + consulserver1outputstring2 + '\n' + '\n' )
     f.write(allvars1 + '\n' + allvars2 + '\n' + allvars3 + '\n' + '\n' )
     f.close()
 
