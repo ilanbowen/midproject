@@ -45,7 +45,7 @@
      - jenkins_cli_build_deploy_docker_app_in_k8s_job
 
 - name: Consul - Install Agent on Server
-  hosts: consulserver1
+  hosts: consulserver1,consulserver2,consulserver3
   become: true
   roles:
      - consul_install_server

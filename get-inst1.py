@@ -35,8 +35,6 @@ def get_instances():
 
 def main():
     instancelist = get_instances()
-    listcount=len(instancelist)
-    blankline = ""
 
     for i in instancelist:
       if(i[0]=='MidProjectAnsible'):
@@ -59,6 +57,14 @@ def main():
          consulserver1outputstring1 = str('[consulserver1]')
          consulserver1outputstring2 = str('consulserver1 ansible_host=') + i[1]
 
+      if(i[0]=='MidProjectConsulServer2'):
+         consulserver2outputstring1 = str('[consulserver2]')
+         consulserver2outputstring2 = str('consulserver2 ansible_host=') + i[1]
+
+      if(i[0]=='MidProjectConsulServer3'):
+         consulserver3outputstring1 = str('[consulserver3]')
+         consulserver3outputstring2 = str('consulserver3 ansible_host=') + i[1]                  
+
     allvars1 = str('[all:vars]')
     allvars2 = str('ansible_user=ubuntu')
     allvars3 = str('ansible_ssh_private_key_file=/home/ubuntu/midproject/id_rsa')
@@ -69,6 +75,8 @@ def main():
     f.write(kubernetesminion1outputstring1 + '\n' + kubernetesminion1outputstring2 + '\n' + '\n' )    
     f.write(jenkinsmasteroutputstring1 + '\n' + jenkinsmasteroutputstring2 + '\n' + '\n' )    
     f.write(consulserver1outputstring1 + '\n' + consulserver1outputstring2 + '\n' + '\n' )
+    f.write(consulserver2outputstring1 + '\n' + consulserver2outputstring2 + '\n' + '\n' )
+    f.write(consulserver3outputstring1 + '\n' + consulserver3outputstring2 + '\n' + '\n' )
     f.write(allvars1 + '\n' + allvars2 + '\n' + allvars3 + '\n' + '\n' )
     f.close()
 
