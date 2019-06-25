@@ -1,2 +1,2 @@
 #!/bin/bash
-/home/ubuntu/midproject/Kubernetes/createpodandservice.sh
+/home/ubuntu/midproject/Docker_Kubernetes/createpodandservice.sh
