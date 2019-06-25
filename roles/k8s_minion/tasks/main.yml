@@ -28,5 +28,5 @@
   
 - name: K8S | Install Minion | Make the script createpodandservice.sh executable
   file: 
-    path: /home/ubuntu/midproject/Kubernetes/createpodandservice.sh
+    path: /home/ubuntu/midproject/Docker_Kubernetes/createpodandservice.sh
     mode: 777
