@@ -4,7 +4,7 @@ from boto import ec2
 
 temphosts = '/home/ubuntu/midproject/hosts'
 k8smaster_role_vars = '/home/ubuntu/midproject/roles/k8s_master/vars/main.yml'
-k8sminion1_role_vars = '/home/ubuntu/midproject/roles/k8s_minion1/vars/main.yml'
+k8sminion1_role_vars = '/home/ubuntu/midproject/roles/k8s_minion/vars/main.yml'
 tfvars = '/home/ubuntu/terraform.tfvars'
 f=open(tfvars, 'r')
 AWS_ACCESS_KEY_ID=(((f.readline()).replace('aws_access_key = "','')).replace('"','')).rstrip()
@@ -84,10 +84,10 @@ def main():
     f.close()
 
     f = open(k8smaster_role_vars,'a')
-    f.write('k8s_master_ip: ' + kubernetesmasterip + '\n' )
+    f.write('k8s_master_ip: "' + kubernetesmasterip + '"\n' )
     f.close()
     f = open(k8sminion1_role_vars,'a')
-    f.write('k8s_master_ip: ' + kubernetesmasterip + '\n' )
+    f.write('k8s_master_ip: "' + kubernetesmasterip + '"\n' )
     f.close()
 
 
