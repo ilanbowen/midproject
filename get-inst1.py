@@ -3,6 +3,8 @@ import boto
 from boto import ec2
 
 temphosts = '/home/ubuntu/midproject/hosts'
+k8smaster_role_vars = '/home/ubuntu/midproject/roles/k8s_master/vars/main.yml'
+k8sminion1_role_vars = '/home/ubuntu/midproject/roles/k8s_minion1/vars/main.yml'
 tfvars = '/home/ubuntu/terraform.tfvars'
 f=open(tfvars, 'r')
 AWS_ACCESS_KEY_ID=(((f.readline()).replace('aws_access_key = "','')).replace('"','')).rstrip()
@@ -44,6 +46,7 @@ def main():
       if(i[0]=='MidProjectKubernetesMaster'):
          kubernetesmasteroutputstring1 = str('[kubernetesmaster]')
          kubernetesmasteroutputstring2 = str('kubernetesmaster ansible_host=') + i[1] 
+         kubernetesmasterip = str(i[1])
 
       if(i[0]=='MidProjectKubernetesMinion1'):
          kubernetesminion1outputstring1 = str('[kubernetesminion1]')
@@ -78,6 +81,13 @@ def main():
     f.write(consulserver2outputstring1 + '\n' + consulserver2outputstring2 + '\n' + '\n' )
     f.write(consulserver3outputstring1 + '\n' + consulserver3outputstring2 + '\n' + '\n' )
     f.write(allvars1 + '\n' + allvars2 + '\n' + allvars3 + '\n' + '\n' )
+    f.close()
+
+    f = open(k8smaster_role_vars,'a')
+    f.write('k8s_master_ip: ' + kubernetesmasterip + '\n' )
+    f.close()
+    f = open(k8sminion1_role_vars,'a')
+    f.write('k8s_master_ip: ' + kubernetesmasterip + '\n' )
     f.close()
 
 
