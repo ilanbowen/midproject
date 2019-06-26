@@ -1,6 +1,16 @@
 ---
 # tasks file for consul server install
-- name: Consul | Install Server
-  shell: /home/ubuntu/midproject/Consul_Scripts/consul_server_install_config.sh
+- name: Consul | Install Server1
+  shell: /home/ubuntu/midproject/Consul_Scripts/consul_server1_install_config.sh
+  become: yes
+  become_method: sudo  
+
+- name: Consul | Install Server2
+  shell: /home/ubuntu/midproject/Consul_Scripts/consul_server2_install_config.sh
+  become: yes
+  become_method: sudo  
+
+- name: Consul | Install Server3
+  shell: /home/ubuntu/midproject/Consul_Scripts/consul_server3_install_config.sh
   become: yes
   become_method: sudo  
