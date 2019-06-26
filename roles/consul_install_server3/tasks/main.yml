@@ -1,0 +1,6 @@
+---
+# tasks file for consul server install
+- name: Consul | Install Server3
+  shell: /home/ubuntu/midproject/Consul_Scripts/consul_server3_install_config.sh
+  become: yes
+  become_method: sudo  

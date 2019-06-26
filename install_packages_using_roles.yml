@@ -44,11 +44,23 @@
      - jenkins_cli_build_upload_docker_image_to_dockerhub_job
      - jenkins_cli_build_deploy_docker_app_in_k8s_job
 
-- name: Consul - Install Agent on Server
-  hosts: consulserver1,consulserver2,consulserver3
+- name: Consul - Install Agent on Server1
+  hosts: consulserver1
   become: true
   roles:
-     - consul_install_server
+     - consul_install_server1
+
+- name: Consul - Install Agent on Server2
+  hosts: consulserver2
+  become: true
+  roles:
+     - consul_install_server2
+
+- name: Consul - Install Agent on Server3
+  hosts: consulserver3
+  become: true
+  roles:
+     - consul_install_server3    
 
 #- name: Consul - Install Agent on Client
 #  hosts: app
