@@ -6,12 +6,13 @@ sudo apt-get -qq update &>/dev/null
 sudo apt-get -yqq install unzip dnsmasq &>/dev/null
 
 echo "Configuring dnsmasq..."
-cat << EODMCF >/etc/dnsmasq.d/10-consul
+cat << EODMCF >10-consul
 # Enable forward lookup of the 'consul' domain:
 server=/consul/127.0.0.1#8600
 EODMCF
+sudo mv 10-consul /etc/dnsmasq.d/
 
-systemctl restart dnsmasq
+sudo systemctl restart dnsmasq
 
 echo "Fetching Consul..."
 cd /tmp
