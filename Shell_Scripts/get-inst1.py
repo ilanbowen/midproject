@@ -6,7 +6,7 @@ temphosts = '/home/ubuntu/midproject/hosts'
 k8smaster_role_vars = '/home/ubuntu/midproject/roles/k8s_master/vars/main.yml'
 k8sminion1_role_vars = '/home/ubuntu/midproject/roles/k8s_minion/vars/main.yml'
 tfvars = '/home/ubuntu/terraform.tfvars'
-consul_install_client = '/home/ubuntu/midproject/Consul_Scripts/consul_client_install_config.sh'
+#consul_install_client = '/home/ubuntu/midproject/Consul_Scripts/consul_client_install_config.sh'
 #consul_install_server1 = '/home/ubuntu/midproject/Consul_Scripts/consul_server1_install_config.sh'
 #consul_install_server2 = '/home/ubuntu/midproject/Consul_Scripts/consul_server2_install_config.sh'
 #consul_install_server3 = '/home/ubuntu/midproject/Consul_Scripts/consul_server3_install_config.sh'
@@ -99,13 +99,13 @@ def main():
     f.write('k8s_master_ip: "' + kubernetesmasterip + '"\n' )
     f.close()
     
-    f = open(consul_install_client,'r')
-    filedata = f.read()
-    f.close()
-    newdata = filedata.replace("192.168.100.101",kubernetesminion1ip)
-    f = open(consul_install_client,'w')
-    f.write(newdata)
-    f.close()
+#    f = open(consul_install_client,'r')
+#    filedata = f.read()
+#    f.close()
+#    newdata = filedata.replace("192.168.100.101",kubernetesminion1ip)
+#    f = open(consul_install_client,'w')
+#    f.write(newdata)
+#    f.close()
 
 #    f = open(consul_install_server1,'r')
 #    filedata = f.read()
