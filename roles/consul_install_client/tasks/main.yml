@@ -5,8 +5,15 @@
   become: yes
   become_method: sudo  
 
+#- name: Move k8ssvc-30001.json to /etc/consul.d/k8ssvc-30001.json
+#  command: mv /home/ubuntu/midproject/Consul_Scripts/k8ssvc-30001.json /etc/consul.d/k8ssvc-30001.json
+#  become: yes
+#  become_method: sudo
+
 - name: Move k8ssvc-30001.json to /etc/consul.d/k8ssvc-30001.json
-  command: mv /home/ubuntu/midproject/Consul_Scripts/k8ssvc-30001.json /etc/consul.d/k8ssvc-30001.json
+  copy:
+    src:/home/ubuntu/midproject/Consul_Scripts/k8ssvc-30001.json
+    dest:/etc/consul.d/k8ssvc-30001.json  
   become: yes
   become_method: sudo
 
@@ -21,4 +28,3 @@
   become_method: sudo  
      
       
-   
