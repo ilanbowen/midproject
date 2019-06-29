@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -e
 
+echo "Grabbing IPs..."
+PRIVATE_IP=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
+
 echo "Installing dependencies..."
 sudo apt-get -qq update &>/dev/null
 sudo apt-get -yqq install unzip dnsmasq &>/dev/null
@@ -28,7 +31,7 @@ sudo mkdir -p /etc/consul.d
 sudo mkdir -p /run/consul
 sudo tee /etc/consul.d/config.json > /dev/null <<EOF
 {
-  "advertise_addr": "192.168.100.101",
+  "advertise_addr": "$PRIVATE_IP",
   "data_dir": "/opt/consul",
   "datacenter": "opsschool",
   "encrypt": "uDBV4e+LbFW3019YKPxIrg==",
