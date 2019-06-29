@@ -16,8 +16,8 @@ spec:
           image: ilanbowen/myflaskproj-img:latest
           ports:
           - containerPort: 5000
-          name: http
-          protocol: TCP
+            name: http
+            protocol: TCP
 
 ---
 # Create a Service that exposes port 30001 and maps it to pod port 5000
