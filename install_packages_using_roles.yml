@@ -44,8 +44,8 @@
      - jenkins_cli_build_upload_docker_image_to_dockerhub_job
      - jenkins_cli_build_deploy_docker_app_in_k8s_job
 
-- name: Install Consul on Kubernetes Minion
-  hosts: kubernetesminion1
-  become: true
-  roles:
-     - consul_install_client
+#- name: Install Consul on Kubernetes Minion
+#  hosts: kubernetesminion1
+#  become: true
+#  roles:
+#     - consul_install_client
