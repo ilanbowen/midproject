@@ -7,17 +7,17 @@ spec:
   replicas: 4
   template:
     metadata:
-	  name: flask-pod
+      name: flask-pod
       labels:
         app: midproj-pod
     spec:
       containers:
         - name: myflaskproj-cont
           image: ilanbowen/myflaskproj-img:latest
-		  ports:
-		  - containerPort: 5000
-		    name: http
-			protocol: TCP
+          ports:
+          - containerPort: 5000
+          name: http
+          protocol: TCP
 
 ---
 # Create a Service that exposes port 30001 and maps it to pod port 5000
