@@ -1,0 +1,6 @@
+---
+- name: Install Consul on Kubernetes Minion
+  hosts: kubernetesminion1
+  become: true
+  roles:
+     - consul_install_client
