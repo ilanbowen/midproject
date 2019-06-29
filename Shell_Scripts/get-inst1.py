@@ -4,9 +4,9 @@ from boto import ec2
 
 temphosts = '/home/ubuntu/midproject/hosts'
 k8smaster_role_vars = '/home/ubuntu/midproject/roles/k8s_master/vars/main.yml'
-k8sminion1_role_vars = '/home/ubuntu/midproject/roles/k8s_minion/vars/main.yml'
+k8sminion_role_vars = '/home/ubuntu/midproject/roles/k8s_minion/vars/main.yml'
 tfvars = '/home/ubuntu/terraform.tfvars'
-consul_install_client = '/home/ubuntu/midproject/Consul_Scripts/consul_client_install_config.sh'
+#consul_install_client = '/home/ubuntu/midproject/Consul_Scripts/consul_client_install_config.sh'
 
 f=open(tfvars, 'r')
 AWS_ACCESS_KEY_ID=(((f.readline()).replace('aws_access_key = "','')).replace('"','')).rstrip()
@@ -55,6 +55,11 @@ def main():
          kubernetesminion1outputstring2 = str('kubernetesminion1 ansible_host=') + i[1]          
          kubernetesminion1ip = str(i[1])
 
+      if(i[0]=='MidProjectKubernetesMinion2'):
+         kubernetesminion2outputstring1 = str('[kubernetesminion2]')
+         kubernetesminion2outputstring2 = str('kubernetesminion2 ansible_host=') + i[1]          
+         kubernetesminion2ip = str(i[1])         
+
       if(i[0]=='MidProjectJenkinsMaster'):
          jenkinsmasteroutputstring1 = str('[jenkinsmaster]')
          jenkinsmasteroutputstring2 = str('jenkinsmaster ansible_host=') + i[1]         
@@ -67,6 +72,7 @@ def main():
     f.write(ansibleoutputstring1 + '\n' + ansibleoutputstring2 + '\n' + '\n' )
     f.write(kubernetesmasteroutputstring1 + '\n' + kubernetesmasteroutputstring2 + '\n' + '\n' )    
     f.write(kubernetesminion1outputstring1 + '\n' + kubernetesminion1outputstring2 + '\n' + '\n' )    
+    f.write(kubernetesminion2outputstring1 + '\n' + kubernetesminion2outputstring2 + '\n' + '\n' )           
     f.write(jenkinsmasteroutputstring1 + '\n' + jenkinsmasteroutputstring2 + '\n' + '\n' )    
     f.write(allvars1 + '\n' + allvars2 + '\n' + allvars3 + '\n' + '\n' )
     f.close()
@@ -74,17 +80,17 @@ def main():
     f = open(k8smaster_role_vars,'a')
     f.write('k8s_master_ip: "' + kubernetesmasterip + '"\n' )
     f.close()
-    f = open(k8sminion1_role_vars,'a')
+    f = open(k8sminion_role_vars,'a')
     f.write('k8s_master_ip: "' + kubernetesmasterip + '"\n' )
     f.close()
     
-    f = open(consul_install_client,'r')
-    filedata = f.read()
-    f.close()
-    newdata = filedata.replace("192.168.100.101",kubernetesminion1ip)
-    f = open(consul_install_client,'w')
-    f.write(newdata)
-    f.close()
+    #f = open(consul_install_client,'r')
+    #filedata = f.read()
+    #f.close()
+    #newdata = filedata.replace("192.168.100.101",kubernetesminion1ip)
+    #f = open(consul_install_client,'w')
+    #f.write(newdata)
+    #f.close()
 
 
 if __name__ == "__main__":
