@@ -13,7 +13,8 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>sudo ssh ubuntu@k8sminion1_server -i /home/ubuntu/id_rsa &quot;bash -s&quot; &lt; /home/ubuntu/midproject/BuildDockerImage.sh</command>
+      <command>sudo ssh ubuntu@k8sminion1_server -i /home/ubuntu/id_rsa &quot;bash -s&quot; &lt; /home/ubuntu/midproject/BuildDockerImage.sh
+      sudo ssh ubuntu@k8sminion1_server -i /home/ubuntu/id_rsa &quot;bash -s&quot; &lt; /home/ubuntu/midproject/BuildDockerImage.sh</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
