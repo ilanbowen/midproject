@@ -1,0 +1,37 @@
+# Create a ReplicaSet that launches several pods and expose port 5000
+apiVersion: extensions/v1beta1
+kind: ReplicaSet
+metadata:
+  name: flask-rs
+spec:
+  replicas: 4
+  template:
+    metadata:
+	  name: flask-pod
+      labels:
+        app: midproj-pod
+    spec:
+      containers:
+        - name: myflaskproj-cont
+          image: ilanbowen/myflaskproj-img:latest
+		  ports:
+		  - containerPort: 5000
+		    name: http
+			protocol: TCP
+
+---
+# Create a Service that exposes port 30001 and maps it to pod port 5000
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-pod-service
+  labels:
+    app: midproj-pod
+spec:
+  selector:
+    app: midproj-pod
+  type: NodePort
+  ports:
+  - port: 5000
+    nodePort: 30001
+    protocol: TCP
