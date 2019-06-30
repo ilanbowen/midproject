@@ -1,0 +1,41 @@
+# Create a ReplicaSet that launches several pods and expose port 5000
+apiVersion: extensions/v1beta1
+kind: ReplicaSet
+metadata:
+  name: kubernetes-node-server-replicaset
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: kubernetes-node-server-replicaset
+  template:
+    metadata:
+      labels:
+        app: kubernetes-node-server-replicaset
+    spec:
+      containers:
+      - name: kubernetes-node-server-replicaset
+        image: ilanbowen/myflaskproj-img:latest
+        ports:
+        - containerPort: 5000
+          name: http
+          protocol: TCP
+
+---
+# Create a Service that exposes port 30001 and maps it to pod port 5000
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubernetes-node-server-replicaset
+spec:
+  selector:
+    app: kubernetes-node-server-replicaset
+  type: NodePort
+  ports:
+  - port: 5000
+    nodePort: 30001
+    protocol: TCP
+    
+    
+    
+    
