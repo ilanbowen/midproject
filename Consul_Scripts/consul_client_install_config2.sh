@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -e
 
+echo "Grabbing IPs..."
+PRIVATE_IP=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
+
 echo "Installing dependencies..."
 sudo apt-get -qq update &>/dev/null
 sudo apt-get -yqq install unzip dnsmasq &>/dev/null
@@ -28,7 +31,7 @@ sudo mkdir -p /etc/consul.d
 sudo mkdir -p /run/consul
 sudo tee /etc/consul.d/config.json > /dev/null <<EOF
 {
-  "advertise_addr": "192.168.100.100",
+  "advertise_addr": "$PRIVATE_IP",
   "data_dir": "/opt/consul",
   "datacenter": "opsschool",
   "encrypt": "uDBV4e+LbFW3019YKPxIrg==",
@@ -36,11 +39,9 @@ sudo tee /etc/consul.d/config.json > /dev/null <<EOF
   "disable_update_check": true,
   "leave_on_terminate": true,
   "retry_join": ["provider=aws tag_key=consul_server tag_value=true"],
-  "node_name": "MidProjectMaster",
-  "server": true,
-  "bootstrap_expect": 1,
-  "ui": true,
-  "client_addr": "0.0.0.0"
+  "node_name": "MidProjectKubernetesMinion2",
+  "enable_script_checks": true,
+  "server": false
 }
 EOF
 

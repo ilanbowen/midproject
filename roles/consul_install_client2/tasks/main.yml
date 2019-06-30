@@ -1,7 +1,7 @@
 ---
 # tasks file for consul client install
 - name: Consul | Install Server
-  shell: /home/ubuntu/midproject/Consul_Scripts/consul_client_install_config.sh
+  shell: /home/ubuntu/midproject/Consul_Scripts/consul_client_install_config2.sh
   become: yes
   become_method: sudo  
 

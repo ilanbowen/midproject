@@ -1,0 +1,25 @@
+---
+# tasks file for consul client install
+- name: Consul | Install Server
+  shell: /home/ubuntu/midproject/Consul_Scripts/consul_client_install_config1.sh
+  become: yes
+  become_method: sudo  
+
+- name: Move k8ssvc-30001.json to /etc/consul.d/k8ssvc-30001.json
+  copy:
+    src: /home/ubuntu/midproject/Consul_Scripts/k8ssvc-30001.json
+    dest: /etc/consul.d/k8ssvc-30001.json  
+  become: yes
+  become_method: sudo
+
+- name: Sleep 30
+  command: sleep 30
+  become: yes
+  become_method: sudo  
+  
+- name: Restart Consul
+  command: systemctl reload consul
+  become: yes
+  become_method: sudo  
+     
+      
