@@ -5,8 +5,8 @@
   roles:
      - consul_install_client1 
      
-- name: Install Consul on Kubernetes Minion 2
-  hosts: kubernetesminion2
-  become: true
-  roles:
-     - consul_install_client2       
+#- name: Install Consul on Kubernetes Minion 2
+#  hosts: kubernetesminion2
+#  become: true
+#  roles:
+#     - consul_install_client2       

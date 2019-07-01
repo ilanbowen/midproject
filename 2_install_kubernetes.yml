@@ -1,6 +1,7 @@
 ---
 - name: Install Kubernetes common components on Master and Slave
-  hosts: kubernetesmaster,kubernetesminion1,kubernetesminion2
+  hosts: kubernetesmaster,kubernetesminion1
+  #hosts: kubernetesmaster,kubernetesminion1,kubernetesminion2  
   roles:
      - k8s_common
 
@@ -10,7 +11,8 @@
      - k8s_master
 
 - name: Install Kubernetes Minion
-  hosts: kubernetesminion1,kubernetesminion2
+  #hosts: kubernetesminion1,kubernetesminion2
+  hosts: kubernetesminion1
   become: true
   roles:
      - k8s_minion    
