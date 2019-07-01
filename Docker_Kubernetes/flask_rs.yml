@@ -33,6 +33,7 @@ spec:
   type: NodePort
   ports:
   - port: 5000
+    targetport: 5000
     nodePort: 30001
     protocol: TCP
     
