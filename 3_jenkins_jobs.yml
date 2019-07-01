@@ -1,0 +1,18 @@
+---
+- name: Jenkins - Create Jobs
+  hosts: jenkinsmaster
+  become: true
+  roles:
+     - jenkins_cli_create_clone_git_repo_job
+     - jenkins_cli_create_build_docker_image_job
+     - jenkins_cli_create_upload_docker_image_to_dockerhub_job
+     - jenkins_cli_create_deploy_docker_app_in_k8s_job
+
+- name: Jenkins - Build Jobs
+  hosts: jenkinsmaster
+  become: true
+  roles:
+     - jenkins_cli_build_clone_git_repo_job
+     - jenkins_cli_build_build_docker_image_job
+     - jenkins_cli_build_upload_docker_image_to_dockerhub_job
+     - jenkins_cli_build_deploy_docker_app_in_k8s_job

@@ -1,0 +1,11 @@
+---
+- name: Docker - Install Docker common components on Master and Slave
+  hosts: kubernetesmaster,kubernetesminion1,kubernetesminion2
+  roles:
+     - docker_common
+
+- name: Jenkins - Install Jenkins Master
+  hosts: jenkinsmaster
+  become: true
+  roles:
+     - jenkins_master

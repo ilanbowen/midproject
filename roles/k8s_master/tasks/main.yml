@@ -30,6 +30,6 @@
   become_user: ubuntu
 
 - name: K8S | Install Master | Install pod network
-  shell: kubectl apply -f "/home/ubuntu/midproject/Docker_Kubernetes/calico.yaml"
-  #shell: kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml  
+  #shell: kubectl apply -f "/home/ubuntu/midproject/Docker_Kubernetes/calico.yaml"
+  shell: kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml  
   become_user: ubuntu
