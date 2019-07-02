@@ -37,6 +37,25 @@ spec:
     nodePort: 30001
     protocol: TCP
     
-    
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubernetes-node-server-replicaset1
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"  
+spec:
+  selector:
+    app: kubernetes-node-server-replicaset
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 30001
+  clusterIP: 10.97.70.172
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+    - ip: 146.148.47.155    
     
     
